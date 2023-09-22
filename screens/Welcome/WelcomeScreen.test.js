@@ -3,9 +3,19 @@ import {render} from '@testing-library/react-native';
 import WelcomeScreen from './WelcomeScreen';
 
 describe('WelcomeScreen', () => {
-  const {getByText, getByTestId, debug} = render(<WelcomeScreen />);
   it('shows the title message', () => {
+    const {getByText, getByTestId} = render(<WelcomeScreen />);
     const title = getByTestId('title');
     expect(title).toHaveTextContent('Welcome to SahasJiban');
   });
+
+  it('should have continue button', () => {
+    const {getByText, getByTestId} = render(<WelcomeScreen />);
+    const button = getByTestId('button');
+    expect(button).toBeTruthy();
+  });
+  it("on press continue button, it should navigate to next screen",()=>{
+    const {getByText, getByTestId} = render(<WelcomeScreen />);
+    
+  })
 });
