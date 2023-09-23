@@ -6,7 +6,7 @@ const WelcomeScreen = ({navigation}) => {
     <SafeAreaView>
       <Text testID="title">Welcome to SahasJiban</Text>
       <Button
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('Home', {item: 'You are awesome'})}
         title="continue"
         testID="button"
         style={{backgroundColor: 'red'}}

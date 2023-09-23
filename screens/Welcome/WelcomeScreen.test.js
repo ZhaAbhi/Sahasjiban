@@ -21,6 +21,8 @@ describe('WelcomeScreen', () => {
     );
     const button = getByTestId('button');
     fireEvent.press(button);
-    expect(navigationMock.navigate).toHaveBeenCalledWith('Home');
+    expect(navigationMock.navigate).toHaveBeenCalledWith('Home', {
+      item: 'You are awesome',
+    });
   });
 });
