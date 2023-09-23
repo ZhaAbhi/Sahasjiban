@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from '@testing-library/react-native';
+import {fireEvent, render} from '@testing-library/react-native';
 import WelcomeScreen from './WelcomeScreen';
 
 describe('WelcomeScreen', () => {
@@ -14,8 +14,13 @@ describe('WelcomeScreen', () => {
     const button = getByTestId('button');
     expect(button).toBeTruthy();
   });
-  it("on press continue button, it should navigate to next screen",()=>{
-    const {getByText, getByTestId} = render(<WelcomeScreen />);
-    
-  })
+  it('on press continue button, it should navigate to next screen', () => {
+    const navigationMock = {navigate: jest.fn()};
+    const {getByText, getByTestId} = render(
+      <WelcomeScreen navigation={navigationMock} />,
+    );
+    const button = getByTestId('button');
+    fireEvent.press(button);
+    expect(navigationMock.navigate).toHaveBeenCalledWith('Home');
+  });
 });
